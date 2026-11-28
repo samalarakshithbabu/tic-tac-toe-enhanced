@@ -1,49 +1,80 @@
-# Tic-Tac-Toe: Console Game with SQLite History, Minimax AI & Analytics
+# 🎮 Tic-Tac-Toe Enhanced
 
-A console-based Tic-Tac-Toe game featuring SQLite game history persistence, minimax AI opponent, and matplotlib analytics visualizations.
+<div align="center">
+
+![Python](https://img.shields.io/badge/python-3.7%2B-blue?logo=python&logoColor=white)
+![SQLite](https://img.shields.io/badge/SQLite-Light-blue?logo=sqlite)
+![Matplotlib](https://img.shields.io/badge/Matplotlib-3.8-blue?logo=python)
+![License](https://img.shields.io/badge/License-MIT-green)
+
+**Console Tic-Tac-Toe with SQLite History, Minimax AI & Analytics**
+
+[![View Demo](https://img.shields.io/badge/View-Demo-blue)]()
+[![Report Issue](https://img.shields.io/badge/Report-Issue-red)](https://github.com/samalarakshithbabu/tic-tac-toe-enhanced/issues)
+
+</div>
 
 ---
 
-## Problem Statement
+## 🚀 Executive Summary
 
-Classic Tic-Tac-Toe implementations lack persistence, AI opponents, and analytical insights. This project demonstrates game state management, adversarial search algorithms, and data visualization.
+A **console-based Tic-Tac-Toe game** featuring SQLite game history persistence, unbeatable Minimax AI opponent, and matplotlib analytics visualizations. Demonstrates game state management, adversarial search, and data visualization.
 
-## Objectives
+### What It Does
 
-- Implement clean console-based two-player Tic-Tac-Toe
-- Add SQLite database for game history persistence
-- Implement minimax algorithm for unbeatable AI opponent
-- Generate analytics charts: win rates, game length distribution, opening move heatmaps, first-move advantage
+```mermaid
+graph TD
+    A[Tic-Tac-Toe Game] --> B[Two Player Mode]
+    A --> C[AI Mode vs Minimax]
+    A --> D[SQLite History]
+    A --> E[Analytics Charts]
+    
+    D --> D1[Win Rates]
+    D --> D2[Game Length]
+    D --> D3[Move Heatmaps]
+```
 
-## Key Features
+---
 
-### Core Game
-- **Two-Player Mode**: Human vs Human on console
-- **AI Mode**: Human vs Minimax AI (optimal play)
-- **Board Representation**: 1D array (positions 0-8) with clean display
+## ✨ Key Features
 
-### SQLite Game History (`tic_tac_toe.db`)
-- Game records: players, moves, winner, duration, timestamp
-- Schema: `games(id, player_x, player_o, winner, moves, duration_sec, created_at)`
-- Automatic persistence after each game
+| Feature | Description |
+|---------|-------------|
+| **Two-Player Mode** | Human vs Human on console |
+| **Minimax AI** | Unbeatable opponent with alpha-beta pruning |
+| **SQLite History** | Persist all games to database |
+| **Analytics Charts** | Matplotlib visualizations |
 
-### Minimax AI
-- Perfect play guarantee (win or draw, never loses)
-- Recursive minimax with alpha-beta pruning
-- Evaluates all possible game states
+---
 
-### Analytics Visualizations (PNG charts generated)
-1. **Win Rate Comparison** (`win_rate_comparison.png`) - X wins, O wins, Draws
-2. **Game Length Distribution** (`game_length_distribution.png`) - Moves per game histogram
-3. **Opening Move Heatmap** (`opening_move_heatmap.png`) - First move frequency by position
-4. **First Move Advantage** (`first_move_advantage.png`) - X vs O win rates by starting position
+## 📊 Analytics Visualizations
 
-## Project Structure
+| Chart | Description |
+|-------|-------------|
+| **Win Rate Comparison** | X wins vs O wins vs Draws |
+| **Game Length Distribution** | Histogram of moves per game |
+| **Opening Move Heatmap** | First move frequency by position |
+| **First-Move Advantage** | X vs O win rates comparison |
+
+---
+
+## 🛠️ Technology Stack
+
+| Component | Technology | Purpose |
+|-----------|------------|---------|
+| **Language** | Python 3.7+ | Core game logic |
+| **Database** | SQLite | Game history |
+| **AI** | Minimax + Alpha-Beta | Unbeatable opponent |
+| **Visualization** | Matplotlib | Analytics charts |
+
+---
+
+## 📁 Project Structure
 
 ```
 tic-tac-toe/
-├── Tic_Tac_Toe_Enhanced.py   # Main game with all features
-├── tic_tac_toe.db            # SQLite database (auto-created)
+├── Tic_Tac_Toe_Enhanced.py   # Main game
+├── tic_tac_toe.db            # SQLite database
 ├── win_rate_comparison.png   # Analytics chart
 ├── game_length_distribution.png
 ├── opening_move_heatmap.png
@@ -51,18 +82,13 @@ tic-tac-toe/
 └── README.md
 ```
 
-## Installation
+---
 
+## 🛠️ Installation
+
+### Basic Game
 ```bash
-# No external dependencies for core game
-# For analytics charts:
-pip install matplotlib
-```
-
-## How to Run
-
-### Basic Game (Human vs Human)
-```bash
+# No dependencies for core game
 python Tic_Tac_Toe_Enhanced.py
 ```
 
@@ -71,12 +97,15 @@ python Tic_Tac_Toe_Enhanced.py
 python Tic_Tac_Toe_Enhanced.py --ai
 ```
 
-### Generate Analytics Charts
+### With Analytics
 ```bash
+pip install matplotlib
 python Tic_Tac_Toe_Enhanced.py --analytics
 ```
 
-## Game Board Positions
+---
+
+## 🎮 Game Board
 
 ```
 0 | 1 | 2
@@ -86,59 +115,48 @@ python Tic_Tac_Toe_Enhanced.py --analytics
 6 | 7 | 8
 ```
 
-## Winning Conditions
+---
 
-A player wins with three marks in any:
-- **Rows**: [0,1,2], [3,4,5], [6,7,8]
-- **Columns**: [0,3,6], [1,4,7], [2,5,8]
-- **Diagonals**: [0,4,8], [2,4,6]
+## 🧠 Minimax AI
 
-## Key Functions
-
-| Function | Description |
-|----------|-------------|
-| `printBoard(xState, zState)` | Displays current board with X/O |
-| `checkWin(xState, zState)` | Checks all 8 winning combinations |
-| `sum(a, b, c)` | Helper to evaluate line of three |
-| `minimax(board, depth, isMaximizing)` | AI decision algorithm |
-| `save_game()` | Persists game to SQLite |
-| `generate_analytics()` | Creates matplotlib charts |
-
-## Sample Analytics Output
-
-After running `--analytics`, the following charts are generated from actual game history:
-
-- **Win Rates**: X typically wins ~58%, O ~28%, Draws ~14% (first-move advantage)
-- **Game Length**: Most games end in 5-7 moves; perfect play = 9 moves (draw)
-- **Opening Moves**: Center (4) and corners (0,2,6,8) are optimal first moves
-- **First-Move Advantage**: Starting player (X) wins ~2x more often than O
-
-## Requirements
-
-- Python 3.7+
-- matplotlib (for analytics charts only)
-- SQLite3 (built-in)
-
-## Limitations
-
-- Console-only interface (no GUI)
-- Analytics require matplotlib installation
-- AI is unbeatable - no difficulty levels implemented
-- No network/multiplayer support
+The AI uses:
+- **Perfect play guarantee** (win or draw, never loses)
+- **Recursive minimax** with alpha-beta pruning
+- **Optimal evaluation** of all possible states
 
 ---
 
-## Author
+## 📊 Sample Analytics
 
-**SAMALA RAKSHITH BABU**  
-
-**Contact:**  
-- Email: samalarakshithbabu7@gmail.com  
-- LinkedIn: https://www.linkedin.com/in/samala-rakshith-babu/  
-- GitHub: https://github.com/samalarakshithbabu  
+| Metric | Value |
+|--------|-------|
+| **X Win Rate** | ~58% |
+| **O Win Rate** | ~28% |
+| **Draw Rate** | ~14% |
+| **Optimal Opening** | Center (4), Corners |
 
 ---
 
-## License
+## ⚠️ Limitations
 
-MIT License
+| Limitation | Description |
+|------------|-------------|
+| **Console Only** | No GUI interface |
+| **AI Unbeatable** | No difficulty levels |
+| **No Multiplayer** | No network support |
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+---
+
+## 👨‍💻 Author
+
+**SAMALA RAKSHITH BABU**
+
+- 📧 Email: samalarakshithbabu7@gmail.com
+- 💼 LinkedIn: [samala-rakshith-babu](https://www.linkedin.com/in/samala-rakshith-babu/)
+- 🐙 GitHub: [samalarakshithbabu](https://github.com/samalarakshithbabu)
